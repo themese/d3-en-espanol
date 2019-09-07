@@ -1,11 +1,20 @@
 import React from 'react';
 import './App.css';
-import {useRoutes}  from 'hookrouter';
+import { useRoutes, A } from 'hookrouter';
+import Routes from './router';
+import { PageNotFound } from './components/page_not_found';
 
 const App: React.FC = () => {
-  const routeResult = useRou
+  const routeResult = useRoutes(Routes);
   return (
-    <VerticalBarChart />
+    <div className='App'>
+      <ul>
+        <li><A href="/vertical">Vertical Bar Chart</A> </li>
+        <li><A href="/horizontal">Horizontal Bar Chart</A></li>
+        <li><A href="/contact">Contacts Page</A> <br /></li>
+      </ul>
+      {routeResult || <PageNotFound />}
+    </div>
   );
 }
 
